@@ -18,3 +18,21 @@ docker pull artemgoncharov3012/simple-db-app:latest
 ```
 docker-compose up -d
 ```
+
+### 3. Использование Kubernetes
+Для запуска кластера:
+```
+minikube start
+```
+Для создания отдельного пода:
+```
+kubectl apply -f ./kube/pod.yaml
+```
+Для создания deployment:
+```
+kubectl apply -f ./kube/deployment.yaml
+```
+Для создания сервиса:
+```
+kubectl expose deployment db-app-deployment --type=ClusterIP --port=3002
+```
