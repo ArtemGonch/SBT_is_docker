@@ -1,12 +1,25 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: db-app-pod
+  name: app
   labels:
     app: app
 spec:
   containers:
-    - name: db-app
+    - name: node-app
       image: artemgoncharov3012/simple-db-app
       ports:
-        - containerPort: 3002
+        - containerPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-service
+spec:
+  selector:
+    app: app
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
+  type: NodePort
